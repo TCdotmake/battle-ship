@@ -1,3 +1,4 @@
+import Ship from "./Ship";
 function mkPosArr(size = 10) {
   const posArr = [];
   if (size > 0 && size <= 26) {
@@ -12,8 +13,12 @@ function mkPosArr(size = 10) {
 
 export default function GameBoard(size = 10) {
   const gameBoard = {
+    ships: [],
     occupied: [],
     posArr: mkPosArr(size),
+    //getShipCoordinates
+    //return array of coordinates ship occupies if placement is inbound and empty
+    //else return false
     getShipCoordinates(pos, shipLength, vertical = true) {
       let x, y;
       const shipCoordinates = [];
@@ -44,7 +49,25 @@ export default function GameBoard(size = 10) {
       }
       return shipCoordinates;
     },
-    placeShip(pos, shipLength, vertical = true) {},
+    //placeShip
+    // attempt to place ship based on coordinate, shiplength and orientation
+    // return true if all green, else return false
+    placeShip(pos, shipLength, vertical = true) {
+      let coordinates = this.getShipCoordinates(pos, shipLength, vertical);
+      if (coordinates) {
+        //create ship and record coordinate
+        const newShip = Ship(shipLength);
+        newShip.coordinate = [...coordinates];
+        //add ship to board and set occupied coordinates
+        this.ships.push(newShip);
+        for (let n of coordinates) {
+          this.occupied.push(n);
+        }
+        return true;
+      } else {
+        return false;
+      }
+    },
   };
 
   return gameBoard;

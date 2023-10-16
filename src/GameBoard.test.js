@@ -45,3 +45,27 @@ test("It should be illegal to getShipCoordinates that result in out of bound, ho
   const result = gameBoard.getShipCoordinates("3,3", 2, false);
   expect(result).toBe(false);
 });
+
+test("try to place ship out of bound", () => {
+  const gameBoard = GameBoard(3);
+  const result = gameBoard.placeShip("3,3", 2, false);
+  expect(result).toBe(false);
+});
+
+test("place a ship in bound", () => {
+  const gameBoard = GameBoard();
+  const result = gameBoard.placeShip("2,4", 5, false);
+  expect(result).toBe(true);
+});
+
+test("Empty board should have one ship after placing", () => {
+  const gameBoard = GameBoard();
+  gameBoard.placeShip("2,4", 5, false);
+  expect(gameBoard.ships.length).toBe(1);
+});
+
+test("occupied should be updated after placement", () => {
+  const gameBoard = GameBoard();
+  gameBoard.placeShip("2,4", 5, false);
+  expect(gameBoard.occupied.length).toBe(5);
+});
