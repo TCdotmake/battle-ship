@@ -18,7 +18,9 @@
   "scripts": {
     "test": "jest",
     "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "jest --watch *.js"
+
   },
   "keywords": [],
   "author": "",
