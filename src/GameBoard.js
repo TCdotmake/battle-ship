@@ -1,3 +1,4 @@
+import Ship from "./Ship";
 export default function GameBoard(size) {
   if (size >= 0) {
     const length = size * size;
@@ -9,8 +10,12 @@ export default function GameBoard(size) {
       size,
       ships: [],
       board: [...arr],
+      inBound(x, y) {
+        return x >= 0 && x < this.size && y >= 0 && y < this.size;
+      },
+
       getIndex(x, y) {
-        if (x >= 0 && x < this.size && y >= 0 && y < this.size) {
+        if (this.inBound(x, y)) {
           return this.size * y + x;
         } else return undefined;
       },
@@ -24,6 +29,36 @@ export default function GameBoard(size) {
         const index = this.getIndex(x, y);
         if (index != undefined) {
           return this.board[index];
+        }
+      },
+      isEmpty(x, y) {
+        return this.getToken(x, y) === null;
+      },
+      allocateSpace(x, y, shipLength, vertical = true) {
+        let indexArr = [];
+        if (vertical) {
+          for (let i = 0; i < shipLength; i++) {
+            if (this.inBound(x, y + i) && this.isEmpty(x, y + i)) {
+              indexArr.push(this.getIndex(x, y + i));
+            } else return undefined;
+          }
+        } else {
+          for (let i = 0; i < shipLength; i++) {
+            if (this.inBound(x + i, y) && this.isEmpty(x + i, y)) {
+              indexArr.push(this.getIndex(x + i, y));
+            } else return undefined;
+          }
+        }
+        return indexArr;
+      },
+      placeShip(x, y, shipLength, vertical = true) {
+        let indArr = this.allocateSpace(x, y, shipLength, vertical);
+        if (indArr !== undefined) {
+          const shipIndex = this.ships.length;
+          this.ships.push(Ship(shipLength));
+          for (let index of indArr) {
+            this.board[index] = shipIndex;
+          }
         }
       },
     };

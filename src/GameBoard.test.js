@@ -56,3 +56,39 @@ test("retriving existing token with getToken", () => {
   gb.setToken(2, 2, "meow");
   expect(gb.getToken(2, 2)).toEqual("meow");
 });
+
+test("trying to allocateSpace that leads to out of bound return undefined, vertical", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  const result = gb.allocateSpace(0, 0, 5, true);
+  expect(result).toBe(undefined);
+});
+
+test("trying to allocateSpace that leads to out of bound return undefined, horizontal", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  const result = gb.allocateSpace(0, 0, 5, false);
+  expect(result).toBe(undefined);
+});
+
+test("allocateSpace space with valid parameter on empty board, vertical", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  const result = gb.allocateSpace(0, 0, 2, true);
+  expect(result).toEqual([0, 3]);
+});
+
+test("allocateSpace space with valid parameter on empty board, horizontal", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  const result = gb.allocateSpace(0, 0, 2, false);
+  expect(result).toEqual([0, 1]);
+});
+
+test("allocateSpace should return false if coordinate is not empty", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  gb.board[1] = "token";
+  const result = gb.allocateSpace(0, 0, 3, false);
+  expect(result).toBe(undefined);
+});
