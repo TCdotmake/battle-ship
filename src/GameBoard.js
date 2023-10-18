@@ -59,7 +59,8 @@ export default function GameBoard(size) {
           for (let index of indArr) {
             this.board[index] = shipIndex;
           }
-        }
+          return true;
+        } else return false;
       },
     };
     return gameBoardObj;

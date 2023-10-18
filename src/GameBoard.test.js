@@ -92,3 +92,44 @@ test("allocateSpace should return false if coordinate is not empty", () => {
   const result = gb.allocateSpace(0, 0, 3, false);
   expect(result).toBe(undefined);
 });
+
+test("out of bound placement lead to placShip returning false", () => {
+  const size = 3;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(4, 5, 4, true);
+  expect(result).toBe(false);
+});
+
+test("length of board.ship should be 1 after first placement", () => {
+  const size = 5;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  expect(gb.ships.length).toBe(1);
+});
+
+test("ship coordinate should contain index of the ship in ships", () => {
+  const size = 5;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  expect(gb.getToken(2, 3)).toBe(0);
+});
+test("ship coordinate should contain index of the ship in ships", () => {
+  const size = 5;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  expect(gb.getToken(2, 4)).toBe(0);
+});
+test("check if 2nd ship is index correctly as 1", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(3, 3, 2, true);
+  expect(gb.getToken(3, 3)).toBe(1);
+});
+test("ships cannot have over lapping coordinates", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(2, 4, 2, false);
+  expect(result2).toBe(false);
+});
