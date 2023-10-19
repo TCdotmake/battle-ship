@@ -9,6 +9,7 @@ export default function GameBoard(size) {
     const gameBoardObj = {
       size,
       ships: [],
+      missed: [],
       board: [...arr],
       inBound(x, y) {
         return x >= 0 && x < this.size && y >= 0 && y < this.size;
@@ -61,6 +62,17 @@ export default function GameBoard(size) {
           }
           return true;
         } else return false;
+      },
+      receiveAttack(x, y) {
+        if (this.inBound(x, y)) {
+          const index = this.getToken(x, y);
+          if (index === null && !this.missed.includes(this.getIndex(x, y))) {
+            this.missed.push(this.getIndex(x, y));
+          } else if (index !== "hit") {
+            this.setToken(x, y, "hit");
+            this.ships[index].hit();
+          }
+        }
       },
     };
     return gameBoardObj;

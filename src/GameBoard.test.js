@@ -133,3 +133,43 @@ test("ships cannot have over lapping coordinates", () => {
   let result2 = gb.placeShip(2, 4, 2, false);
   expect(result2).toBe(false);
 });
+test("calling receiveAttack on empty spot will put an element into missed", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  gb.receiveAttack(5, 5);
+  expect(gb.missed.length).toBe(1);
+});
+test("verify content of missed after receiveAttack on empty coordinate", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  gb.receiveAttack(5, 5);
+  expect(gb.missed[0]).toBe(gb.getIndex(5, 5));
+});
+test("hit gets call on correct ship when receiveAttack is called", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(3, 3, 2, true);
+  gb.receiveAttack(3, 4);
+  expect(gb.ships[1].hits).toBe(1);
+});
+test("should not be able to sink a ship by hitting the same spot over and over", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(3, 3, 2, true);
+  gb.receiveAttack(3, 4);
+  gb.receiveAttack(3, 4);
+  gb.receiveAttack(3, 4);
+  expect(gb.ships[1].isSunk()).toBe(false);
+});
+test("only push item into missed at first call", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(3, 3, 2, true);
+  gb.receiveAttack(0, 0);
+  gb.receiveAttack(0, 0);
+  gb.receiveAttack(0, 0);
+  expect(gb.missed.length).toBe(1);
+});
