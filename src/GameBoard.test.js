@@ -133,18 +133,22 @@ test("ships cannot have over lapping coordinates", () => {
   let result2 = gb.placeShip(2, 4, 2, false);
   expect(result2).toBe(false);
 });
-test("calling receiveAttack on empty spot will put an element into missed", () => {
+
+test("coordinate should be marked missed on board if missed", () => {
   const size = 7;
   const gb = GameBoard(size);
   gb.receiveAttack(5, 5);
-  expect(gb.missed.length).toBe(1);
+  expect(gb.getToken(5, 5)).toBe("missed");
 });
-test("verify content of missed after receiveAttack on empty coordinate", () => {
+
+test("coordinate should be marked hit on board if missed", () => {
   const size = 7;
   const gb = GameBoard(size);
-  gb.receiveAttack(5, 5);
-  expect(gb.missed[0]).toBe(gb.getIndex(5, 5));
+  gb.placeShip(2, 3, 2, true);
+  gb.receiveAttack(2, 4);
+  expect(gb.getToken(2, 4)).toBe("hit");
 });
+
 test("hit gets call on correct ship when receiveAttack is called", () => {
   const size = 7;
   const gb = GameBoard(size);
@@ -163,13 +167,26 @@ test("should not be able to sink a ship by hitting the same spot over and over",
   gb.receiveAttack(3, 4);
   expect(gb.ships[1].isSunk()).toBe(false);
 });
-test("only push item into missed at first call", () => {
+
+test("isDefeated return true when all ships are sunk", () => {
   const size = 7;
   const gb = GameBoard(size);
   let result = gb.placeShip(2, 3, 2, true);
   let result2 = gb.placeShip(3, 3, 2, true);
-  gb.receiveAttack(0, 0);
-  gb.receiveAttack(0, 0);
-  gb.receiveAttack(0, 0);
-  expect(gb.missed.length).toBe(1);
+  gb.receiveAttack(2, 3);
+  gb.receiveAttack(2, 4);
+  gb.receiveAttack(3, 3);
+  gb.receiveAttack(3, 4);
+  expect(gb.isDefeated()).toBe(true);
+});
+test("isDefeated return false when not all ships are sunk", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  let result2 = gb.placeShip(3, 3, 2, true);
+  gb.receiveAttack(2, 3);
+  gb.receiveAttack(2, 4);
+  gb.receiveAttack(3, 3);
+
+  expect(gb.isDefeated()).toBe(false);
 });
