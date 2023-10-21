@@ -10,8 +10,8 @@ export default function BoardContainer() {
   const cellContainer = document.createElement("div");
   cellContainer.classList.add("cell-container");
   boardContainer.append(empty, xlabel, ylabel, cellContainer);
-  xlabel.append(...tempLabelArr());
-  ylabel.append(...tempLabelArr());
+  xlabel.append(...xLabelArr());
+  ylabel.append(...yLabelArr());
   cellContainer.append(...cellArr());
   return boardContainer;
 }
@@ -30,13 +30,26 @@ function cellArr(size = 10) {
   return arr;
 }
 
-function tempLabelArr() {
+function xLabelArr() {
   let arr = [];
   for (let i = 0; i <= 9; i++) {
     let item = document.createElement("div");
     item.classList.add("label-container");
     let label = document.createElement("p");
-    label.innerHTML = i;
+    label.innerHTML = i + 1;
+    item.append(label);
+    arr.push(item);
+  }
+  return arr;
+}
+
+function yLabelArr() {
+  let arr = [];
+  for (let i = 0; i <= 9; i++) {
+    let item = document.createElement("div");
+    item.classList.add("label-container");
+    let label = document.createElement("p");
+    label.innerHTML = String.fromCharCode(i + 65);
     item.append(label);
     arr.push(item);
   }
