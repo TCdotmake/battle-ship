@@ -1,5 +1,5 @@
 import Ship from "./Ship";
-export default function GameBoard(size) {
+export default function GameBoard(size = 10) {
   if (size >= 0) {
     const length = size * size;
     const arr = [];

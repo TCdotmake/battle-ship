@@ -1,0 +1,31 @@
+.board-container {
+  background-color: grey;
+  width: 20rem;
+  height: 20rem;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  > * {
+    background-color: #fff;
+  }
+}
+
+.empty {
+  grid-area: 1;
+  background-color: aqua;
+}
+
+.xlabel {
+  grid-area: 1/2/2/12;
+  background-color: bisque;
+}
+
+.ylabel {
+  grid-area: 2/1/12/2;
+  background-color: bisque;
+}
+
+.cell-container {
+  grid-area: 2/2/12/12;
+  background-color: orchid;
+}
