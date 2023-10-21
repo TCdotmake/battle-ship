@@ -3,16 +3,42 @@ export default function BoardContainer() {
   boardContainer.classList.add("board-container");
   const empty = document.createElement("div");
   empty.classList.add("empty");
-  empty.innerHTML = "empty";
   const xlabel = document.createElement("div");
   xlabel.classList.add("xlabel");
-  xlabel.innerHTML = "xlabel";
   const ylabel = document.createElement("div");
   ylabel.classList.add("ylabel");
-  ylabel.innerHTML = "ylabel";
   const cellContainer = document.createElement("div");
   cellContainer.classList.add("cell-container");
-  cellContainer.innerHTML = "cell container";
   boardContainer.append(empty, xlabel, ylabel, cellContainer);
+  xlabel.append(...tempLabelArr());
+  ylabel.append(...tempLabelArr());
+  cellContainer.append(...cellArr());
   return boardContainer;
+}
+
+function cellArr(size = 10) {
+  const length = size * size;
+  const arr = [];
+  for (let i = 0; i < length; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.dataset.index = i;
+    cell.dataset.x = i % 10;
+    cell.dataset.y = Math.floor(i / 10);
+    arr.push(cell);
+  }
+  return arr;
+}
+
+function tempLabelArr() {
+  let arr = [];
+  for (let i = 0; i <= 9; i++) {
+    let item = document.createElement("div");
+    item.classList.add("label-container");
+    let label = document.createElement("p");
+    label.innerHTML = i;
+    item.append(label);
+    arr.push(item);
+  }
+  return arr;
 }

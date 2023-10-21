@@ -1,5 +1,5 @@
 import BoardContainer from "./BoardContainer.js";
 
 export default function BattleShip() {
-  document.body.append(BoardContainer(), BoardContainer());
+  document.body.append(BoardContainer());
 }
