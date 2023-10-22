@@ -1,4 +1,4 @@
-export default function BoardContainer() {
+export default function BoardContainer(name) {
   const boardContainer = document.createElement("div");
   boardContainer.classList.add("board-container");
   const empty = document.createElement("div");
@@ -9,6 +9,7 @@ export default function BoardContainer() {
   ylabel.classList.add("ylabel");
   const cellContainer = document.createElement("div");
   cellContainer.classList.add("cell-container");
+  cellContainer.id = name;
   boardContainer.append(empty, xlabel, ylabel, cellContainer);
   xlabel.append(...xLabelArr());
   ylabel.append(...yLabelArr());

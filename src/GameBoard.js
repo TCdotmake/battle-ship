@@ -16,7 +16,7 @@ export default function GameBoard(size = 10) {
 
       getIndex(x, y) {
         if (this.inBound(x, y)) {
-          return this.size * y + x;
+          return parseInt(this.size * y) + parseInt(x);
         } else return undefined;
       },
       setToken(x, y, token) {
@@ -68,14 +68,16 @@ export default function GameBoard(size = 10) {
       },
       receiveAttack(x, y) {
         let result = false;
-        if (this.inBound(x, y) && this.validAttack(x, y)) {
-          const index = this.getToken(x, y);
-          result = true;
-          if (index === null) {
-            this.setToken(x, y, "missed");
-          } else {
-            this.setToken(x, y, "hit");
-            this.ships[index].hit();
+        if (this.inBound(x, y)) {
+          if (this.validAttack(x, y)) {
+            const index = this.getToken(x, y);
+            result = true;
+            if (index === null) {
+              this.setToken(x, y, "missed");
+            } else {
+              this.setToken(x, y, "hit");
+              this.ships[index].hit();
+            }
           }
         }
         return result;
