@@ -1,6 +1,10 @@
 import BoardContainer from "./BoardContainer.js";
 import placeRandShips from "./placeRandShips.js";
+import mkIcon from "./icon/mkIcon";
+import shipSVG from "./icon/shipSVG";
+import hitSVG from "./icon/hitSVG.js";
 import Player from "./Player.js";
+import missedSVG from "./icon/missedSVG.js";
 export default function BattleShip() {
   const p1AttackCells = "p1-attack";
   const p2AttackCells = "p2-attack";
@@ -30,7 +34,7 @@ function displayShips(playerName, player) {
   let numRegex = /^\d+$/;
   for (let index = 0; index < cells.length; index++) {
     if (numRegex.test(board[index])) {
-      cells.item(index).innerHTML = board[index];
+      cells.item(index).append(mkIcon("ship-icon", shipSVG));
     }
   }
 }

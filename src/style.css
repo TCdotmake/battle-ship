@@ -3,3 +3,6 @@
 
 /*Board Container*/
 @import "./BoardContainer.css";
+
+/*icon*/
+@import "./icon/icon.css";

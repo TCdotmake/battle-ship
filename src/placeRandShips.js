@@ -1,5 +1,6 @@
 //takes in a player and place ships randomly on it's board
-
+import mkIcon from "./icon/mkIcon";
+import shipSVG from "./icon/shipSVG";
 const shiplengths = [5, 4, 3, 3, 2];
 function randPos() {
   return Math.floor(Math.random() * 10);
