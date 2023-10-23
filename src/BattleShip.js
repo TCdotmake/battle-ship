@@ -23,8 +23,15 @@ export default function BattleShip() {
       e.preventDefault();
       const x = e.target.dataset.x;
       const y = e.target.dataset.y;
-      player2.attack(x, y);
-      console.log(player1.board.getToken(x, y));
+      const valid = player2.attack(x, y);
+      if (valid) {
+        let token = player1.board.getToken(x, y);
+        if (token === "hit") {
+          e.target.append(mkIcon("hit", hitSVG));
+        } else {
+          e.target.append(mkIcon("missed", missedSVG));
+        }
+      }
     });
   }
 }
