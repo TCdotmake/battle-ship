@@ -13,26 +13,26 @@ test("check if Attack is registering misses", () => {
   let Player2 = Player();
   player1.setOpponent(Player2);
   player1.attack(3, 3);
-  expect(Player2.board.getToken(3, 3)).toBe("missed");
+  expect(Player2.getToken(3, 3)).toBe("missed");
 });
 
 test("check if Attack is registering hits", () => {
   let player1 = Player();
   let Player2 = Player();
   player1.setOpponent(Player2);
-  Player2.board.placeShip(3, 3, 2, true);
+  Player2.placeShip(3, 3, 2, true);
   player1.attack(3, 3);
-  expect(Player2.board.getToken(3, 3)).toBe("hit");
+  expect(Player2.getToken(3, 3)).toBe("hit");
 });
 
 test("check behavior of duplicated hits", () => {
   let player1 = Player();
   let Player2 = Player();
   player1.setOpponent(Player2);
-  Player2.board.placeShip(3, 3, 2, true);
-  let index = Player2.board.getToken(3, 3);
+  Player2.placeShip(3, 3, 2, true);
+  let index = Player2.getToken(3, 3);
   player1.attack(3, 3);
   player1.attack(3, 3);
   player1.attack(3, 3);
-  expect(Player2.board.ships[index].hits).toBe(1);
+  expect(Player2.ships[index].hits).toBe(1);
 });

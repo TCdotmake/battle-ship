@@ -1,8 +1,10 @@
 import GameBoard from "./GameBoard";
 
-export default function Player() {
+export default function Player(name) {
   let playerObj = {
     ...GameBoard(),
+    name,
+    AI: false,
     opponent: undefined,
     setOpponent(anotherPlayer) {
       this.opponent = anotherPlayer;

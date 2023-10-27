@@ -10,6 +10,9 @@ export default function GameBoard(size = 10) {
       size,
       ships: [],
       board: [...arr],
+      resetBoard() {
+        this.board = [...arr];
+      },
       inBound(x, y) {
         return x >= 0 && x < this.size && y >= 0 && y < this.size;
       },

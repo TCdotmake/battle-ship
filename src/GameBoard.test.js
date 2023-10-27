@@ -190,3 +190,11 @@ test("isDefeated return false when not all ships are sunk", () => {
 
   expect(gb.isDefeated()).toBe(false);
 });
+
+test("resetBoard", () => {
+  const size = 7;
+  const gb = GameBoard(size);
+  let result = gb.placeShip(2, 3, 2, true);
+  gb.resetBoard();
+  expect(gb.getToken(2, 3)).toBe(null);
+});
