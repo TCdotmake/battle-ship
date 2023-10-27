@@ -13,18 +13,9 @@ export default function initStaticDOM() {
   const p1Self = BoardContainer("p1-self");
   p1Div.append(p1Enemy, p1Self);
   const p2Div = document.createElement("div");
-  const p2Enemy = BoardContainer("p1-enemy");
-  const p2Self = BoardContainer("p1-self");
+  const p2Enemy = BoardContainer("p2-enemy");
+  const p2Self = BoardContainer("p2-self");
   p2Div.append(p2Enemy, p2Self);
   appBG.append(newGameBtn, toggleAIBtn, p1Div, p2Div);
   document.body.append(appBG);
-}
-
-function newGameRoutine() {
-  //empty all cells
-  const cellsArr = document.querySelectorAll(".cell");
-  for (let cell of cellsArr) {
-    cell.innerHTML = "";
-  }
-  //open modal
 }
