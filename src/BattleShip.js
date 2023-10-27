@@ -25,7 +25,7 @@ export default function BattleShip() {
       const y = e.target.dataset.y;
       const valid = player2.attack(x, y);
       if (valid) {
-        let token = player1.board.getToken(x, y);
+        let token = player1.getToken(x, y);
         if (token === "hit") {
           e.target.append(mkIcon("hit", hitSVG));
         } else {
@@ -37,7 +37,7 @@ export default function BattleShip() {
 }
 function displayShips(playerName, player) {
   const cells = document.getElementById(playerName).children;
-  const board = player.board.board;
+  const board = player.board;
   let numRegex = /^\d+$/;
   for (let index = 0; index < cells.length; index++) {
     if (numRegex.test(board[index])) {

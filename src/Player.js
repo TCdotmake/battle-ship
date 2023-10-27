@@ -2,14 +2,13 @@ import GameBoard from "./GameBoard";
 
 export default function Player() {
   let playerObj = {
-    board: GameBoard(),
+    ...GameBoard(),
     opponent: undefined,
     setOpponent(anotherPlayer) {
       this.opponent = anotherPlayer;
     },
     attack(x, y) {
-      let enemyBoard = this.opponent.board;
-      let result = enemyBoard.receiveAttack(x, y);
+      let result = this.opponent.receiveAttack(x, y);
       return result;
     },
   };
