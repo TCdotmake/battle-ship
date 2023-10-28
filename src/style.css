@@ -6,3 +6,9 @@
 
 /*icon*/
 @import "./icon/icon.css";
+
+/*modal*/
+@import "./modal//modal.css";
+
+/*app, general apperance*/
+@import "./app.css";
