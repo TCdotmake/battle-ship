@@ -34,6 +34,15 @@ function openSwitchModal(gameObj) {
     playerName.innerHTML = `Player2's`;
   }
   modal.style.display = "block";
+  switchDisplayedBoard(gameObj, name);
+}
+
+function switchDisplayedBoard(gameObj, name) {
+  const opponent = gameObj.currentPlayer.opponent;
+  const current = document.getElementById(`${name}-div`);
+  const prev = document.getElementById(`${opponent.name}-div`);
+  prev.style.display = "none";
+  current.style.display = "block";
 }
 
 function cellsAddEL(player, gameObj) {
@@ -51,9 +60,13 @@ function cellsAddEL(player, gameObj) {
           updateBoards(player, x, y, e);
           //check for winner, make game inactive is won
           checkForWinner(gameObj);
-          //switch currentPlayer
+          //switch currentPlayer and continue with game
           if (gameObj.active) {
             gameObj.togglePlayer();
+            //if playing against another player, pull up modal
+            if (!gameObj.currentPlayer.AI) {
+              openSwitchModal(gameObj);
+            }
           }
         }
       }
