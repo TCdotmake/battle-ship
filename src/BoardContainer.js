@@ -24,8 +24,8 @@ function cellArr(size = 10) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.dataset.index = i;
-    cell.dataset.x = i % 10;
-    cell.dataset.y = Math.floor(i / 10);
+    cell.dataset.x = i % size;
+    cell.dataset.y = Math.floor(i / size);
     arr.push(cell);
   }
   return arr;
