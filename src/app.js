@@ -48,13 +48,25 @@ function cellsAddEL(player) {
       const y = e.target.dataset.y;
       const valid = player.attack(x, y);
       if (valid) {
-        let token = player.opponent.getToken(x, y);
-        if (token === "hit") {
-          e.target.append(mkIcon("hit", hitSVG));
-        } else {
-          e.target.append(mkIcon("missed", missedSVG));
-        }
+        updatePlayerBoard(player, x, y, e);
       }
     });
+  }
+}
+function updatePlayerBoard(player, x, y, e) {
+  const opponent = player.opponent;
+
+  const token = opponent.getToken(x, y);
+  const index = opponent.getIndex(x, y);
+  const cell = document.getElementById(`${opponent.name}-self`).children[index];
+  //find opponent cell
+  if (token === "hit") {
+    e.target.append(mkIcon("hit", hitSVG));
+    cell.innerHTML = "";
+    cell.append(mkIcon("hit", hitSVG));
+  } else if (token === "missed") {
+    e.target.append(mkIcon("missed", missedSVG));
+    cell.innerHTML = "";
+    cell.append(mkIcon("missed", missedSVG));
   }
 }
