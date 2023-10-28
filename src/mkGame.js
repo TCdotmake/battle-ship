@@ -2,6 +2,7 @@ import Player from "./Player";
 
 export default function mkGame() {
   let gameObj = {
+    active: false,
     toggleP2AI() {
       this.p2.AI = !this.p2.AI;
     },

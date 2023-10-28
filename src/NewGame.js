@@ -12,6 +12,8 @@ export default function NewGame(gameObj) {
   placeRandShips(gameObj.p2);
   //set currentPlayer to p1
   gameObj.currentPlayer = gameObj.p1;
+  // set game to active
+  gameObj.active = true;
 
   //newgame routine for visual
   //empty all cells

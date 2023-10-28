@@ -9,10 +9,12 @@ export default function initStaticDOM() {
   toggleAIBtn.innerHTML = "AI";
   toggleAIBtn.id = "toggle-ai-btn";
   const p1Div = document.createElement("div");
+  p1Div.id = "p1-div";
   const p1Enemy = BoardContainer("p1-enemy");
   const p1Self = BoardContainer("p1-self");
   p1Div.append(p1Enemy, p1Self);
   const p2Div = document.createElement("div");
+  p2Div.id = "p2-div";
   const p2Enemy = BoardContainer("p2-enemy");
   const p2Self = BoardContainer("p2-self");
   p2Div.append(p2Enemy, p2Self);
