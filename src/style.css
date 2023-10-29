@@ -12,3 +12,6 @@
 
 /*app, general apperance*/
 @import "./app.css";
+
+/*end game msg*/
+@import "./gameEnd.css";
