@@ -17,15 +17,15 @@ export default function initStaticDOM() {
   appBG.append(newGameBtn, toggleAIBtn, p1Div, p2Div);
   document.body.append(appBG);
 }
-function mkPlayerDiv(p1Name) {
+function mkPlayerDiv(name) {
   const playerDiv = document.createElement("div");
-  playerDiv.id = `${p1Name}-div`;
-  const playerEnemy = BoardContainer(`${p1Name}-enemy`);
-  const playerSelf = BoardContainer(`${p1Name}-self`);
+  playerDiv.id = `${name}-div`;
+  const playerEnemy = BoardContainer(`${name}-enemy`);
+  const playerSelf = BoardContainer(`${name}-self`);
   const playerDefeat = mkDefeatScreen();
-  playerDefeat.id = `${p1Name}-defeat`;
+  playerDefeat.id = `${name}-defeat`;
   const playerVictory = mkVictoryScreen();
-  playerVictory.id = `${p1Name}-victory`;
+  playerVictory.id = `${name}-victory`;
   playerEnemy.append(playerDefeat);
   playerSelf.append(playerVictory);
   playerDiv.append(playerEnemy, playerSelf);

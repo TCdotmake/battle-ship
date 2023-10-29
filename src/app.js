@@ -66,8 +66,11 @@ function cellsAddEL(player, gameObj) {
           updateBoards(player, x, y);
           //check for winner, make game inactive is won
           checkForWinner(gameObj);
+          if (!gameObj.active) {
+            displayWinner(gameObj);
+          }
           //switch currentPlayer and continue with game
-          if (gameObj.active) {
+          else if (gameObj.active) {
             gameObj.togglePlayer();
             //if playing against another player, pull up modal
             if (!gameObj.currentPlayer.AI) {
@@ -79,7 +82,9 @@ function cellsAddEL(player, gameObj) {
               gameObj.currentPlayer.attack(move.x, move.y);
               updateBoards(gameObj.currentPlayer, move.x, move.y);
               checkForWinner(gameObj);
-              if (gameObj.active) {
+              if (!gameObj.active) {
+                displayWinner(gameObj);
+              } else if (gameObj.active) {
                 gameObj.togglePlayer();
               }
             }
@@ -113,4 +118,18 @@ function checkForWinner(gameObj) {
   if (gameObj.currentPlayer.opponent.isDefeated()) {
     gameObj.active = false;
   }
+}
+
+function displayWinner(gameObj) {
+  let winner = null;
+  let loser = null;
+  if (gameObj.p1.isDefeated()) {
+    winner = document.getElementById("p2-victory");
+    loser = document.getElementById("p1-defeat");
+  } else {
+    winner = document.getElementById("p1-victory");
+    loser = document.getElementById("p2-defeat");
+  }
+  winner.style.display = "flex";
+  loser.style.display = "flex";
 }
