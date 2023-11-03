@@ -2,7 +2,7 @@
 @import "./resetStyle.css";
 
 /*Board Container*/
-@import "./BoardContainer.css";
+@import "./playerDiv.css";
 
 /*icon*/
 @import "./icon/icon.css";

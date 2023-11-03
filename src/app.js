@@ -3,8 +3,8 @@ import initStaticDOM from "./initStaticDOM";
 import mkGame from "./mkGame";
 import switchModal from "./modal/switchPlayerModal";
 import mkIcon from "./icon/mkIcon";
-import hitSVG from "./icon/hitSVG";
-import missedSVG from "./icon/missedSVG";
+import boomSVG from "./icon/boomSVG";
+import missCloudSVG from "./icon/missCloudSVG";
 
 export default function app() {
   initStaticDOM();
@@ -48,7 +48,7 @@ function switchDisplayedBoard(gameObj, name) {
   const current = document.getElementById(`${name}-div`);
   const prev = document.getElementById(`${opponent.name}-div`);
   prev.style.display = "none";
-  current.style.display = "block";
+  current.style.display = "flex";
 }
 
 function cellsAddEL(player, gameObj) {
@@ -104,13 +104,13 @@ function updateBoards(player, x, y) {
   const cell = document.getElementById(`${opponent.name}-self`).children[index];
   //find opponent cell
   if (token === "hit") {
-    playerCell.append(mkIcon("hit", hitSVG));
+    playerCell.append(mkIcon("hit", boomSVG));
     cell.innerHTML = "";
-    cell.append(mkIcon("hit", hitSVG));
+    cell.append(mkIcon("hit", boomSVG));
   } else if (token === "missed") {
-    playerCell.append(mkIcon("missed", missedSVG));
+    playerCell.append(mkIcon("missed", missCloudSVG));
     cell.innerHTML = "";
-    cell.append(mkIcon("missed", missedSVG));
+    cell.append(mkIcon("missed", missCloudSVG));
   }
 }
 
