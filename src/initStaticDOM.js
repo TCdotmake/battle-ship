@@ -1,9 +1,11 @@
 import BoardContainer from "./BoardContainer";
 import mkDefeatScreen from "./mkDefeatScreen";
 import mkVictoryScreen from "./mkVictoryScreen";
+
 export default function initStaticDOM() {
   const appBG = document.createElement("div");
   appBG.id = "app-bg";
+
   const newGameBtn = document.createElement("button");
   newGameBtn.innerHTML = "New Game";
   newGameBtn.id = "new-game-btn";

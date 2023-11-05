@@ -22,6 +22,7 @@ export default function GameBoard(size = 10) {
           return parseInt(this.size * y) + parseInt(x);
         } else return undefined;
       },
+
       setToken(x, y, token) {
         const index = this.getIndex(x, y);
         if (index != undefined) {

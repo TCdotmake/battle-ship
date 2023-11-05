@@ -1,6 +1,9 @@
 /*reset style*/
 @import "./resetStyle.css";
 
+/*bold font*/
+@import "./fonts/lilitaone/lilitaone.css";
+
 /*Board Container*/
 @import "./playerDiv.css";
 

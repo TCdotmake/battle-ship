@@ -20,7 +20,6 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "watch": "jest --watch *.js"
-
   },
   "keywords": [],
   "author": "",
