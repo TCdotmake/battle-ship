@@ -18,3 +18,12 @@
 
 /*end game msg*/
 @import "./gameEnd.css";
+
+/*svg font*/
+@import "./svgText/svgText.css";
+
+/*color variables*/
+@import "./color.css";
+
+/*toggleSwitch*/
+@import "./toggleSwitch.css";

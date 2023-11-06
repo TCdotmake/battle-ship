@@ -8,4 +8,6 @@
   z-index: 998;
   justify-content: center;
   align-items: center;
+  background-image: url("./img/battleShipPattern_200px_dark50.png");
+  background-repeat: repeat;
 }

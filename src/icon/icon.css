@@ -4,3 +4,23 @@
     height: 28px;
   }
 }
+
+.p1-icon {
+  > svg {
+    > g {
+      > path {
+        fill: var(--blue);
+      }
+    }
+  }
+}
+
+.p2-icon {
+  > svg {
+    > g {
+      > path {
+        fill: var(--red);
+      }
+    }
+  }
+}
