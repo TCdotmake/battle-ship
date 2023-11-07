@@ -86,7 +86,9 @@ function cellsAddEL(player, gameObj) {
             gameObj.togglePlayer();
             //if playing against another player, pull up modal
             if (!gameObj.currentPlayer.AI) {
-              openSwitchModal(gameObj);
+              setTimeout(() => {
+                openSwitchModal(gameObj);
+              }, 800);
             }
             //if playing against AI
             else {
