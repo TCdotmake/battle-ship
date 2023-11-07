@@ -12,32 +12,34 @@
   gap: 0.2rem;
 }
 
-#new-game-btn {
-  padding: 0.2rem 0.5rem;
-  color: var(--blue);
-  background-color: white;
-  border: 2px solid var(--blue);
-  border-radius: 10px;
-}
-
 .btn-div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
   > * {
     flex: none;
     font-family: "Lilita One";
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  > button,
+  a {
+    padding: 0.2rem 0.5rem;
+    color: var(--blue);
+    background-color: white;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    margin-left: 0.7rem;
   }
 }
 
 #ai-label {
   color: gray;
   border: 2px solid gray;
-  font-size: 1.2rem;
-  margin-left: 0.5rem;
+
+  margin-left: 0;
   padding: 0.2rem 0.5rem;
   border-radius: 10px;
 

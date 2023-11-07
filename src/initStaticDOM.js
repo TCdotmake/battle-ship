@@ -8,6 +8,7 @@ export default function initStaticDOM() {
   appBG.id = "app-bg";
 
   const svgHeader = mkSVGText("BattleShip");
+  svgHeader.style.marginTop = "0.8rem";
   appBG.append(svgHeader);
 
   const newGameBtn = document.createElement("button");
@@ -22,7 +23,10 @@ export default function initStaticDOM() {
   aiLabel.id = "ai-label";
   aiLabel.innerHTML = "P2 CPU";
 
-  btnDiv.append(newGameBtn, toggle, aiLabel);
+  const github = document.createElement("a");
+  github.innerHTML = "GitHub";
+
+  btnDiv.append(newGameBtn, toggle, aiLabel, github);
 
   const p1Div = mkPlayerDiv("p1");
   const p2Div = mkPlayerDiv("p2");
