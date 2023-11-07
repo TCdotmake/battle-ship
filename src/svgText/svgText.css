@@ -3,11 +3,11 @@
 }
 
 .bevel-color {
-  flood-color: #ff2a2a;
+  flood-color: var(--red);
 }
 
 .text-color {
-  fill: #0088aa;
+  fill: var(--blue);
 }
 
 .svg-text {

@@ -27,6 +27,12 @@ function addNewGameEL(gameObj) {
   const toggleAIBtn = document.getElementById("ai-toggle");
   toggleAIBtn.addEventListener("change", (e) => {
     gameObj.setP2AI(e.target.checked);
+    let label = document.getElementById("ai-label");
+    if (e.target.checked) {
+      label.classList.add("on");
+    } else {
+      label.classList.remove("on");
+    }
   });
 }
 

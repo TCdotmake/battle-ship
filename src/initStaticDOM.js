@@ -17,7 +17,12 @@ export default function initStaticDOM() {
   const btnDiv = document.createElement("div");
   btnDiv.classList.add("btn-div");
   const toggle = toggleSwitch("ai-toggle");
-  btnDiv.append(newGameBtn, toggle);
+
+  const aiLabel = document.createElement("p");
+  aiLabel.id = "ai-label";
+  aiLabel.innerHTML = "P2 CPU";
+
+  btnDiv.append(newGameBtn, toggle, aiLabel);
 
   const p1Div = mkPlayerDiv("p1");
   const p2Div = mkPlayerDiv("p2");

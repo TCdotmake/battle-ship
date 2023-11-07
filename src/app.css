@@ -13,8 +13,6 @@
 }
 
 #new-game-btn {
-  font-family: "Lilita One";
-  font-size: 1.2rem;
   padding: 0.2rem 0.5rem;
   color: var(--blue);
   background-color: white;
@@ -25,7 +23,28 @@
 .btn-div {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
   > * {
     flex: none;
+    font-family: "Lilita One";
+    font-size: 1.2rem;
   }
+}
+
+#ai-label {
+  color: gray;
+  border: 2px solid gray;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+
+  background-color: white;
+}
+
+#ai-label.on {
+  color: var(--red);
+  border: 2px solid var(--red);
 }

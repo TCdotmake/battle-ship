@@ -1,7 +1,7 @@
 export default function mkSVGText(text) {
   let textDiv = document.createElement("div");
   textDiv.style.width = "20rem";
-  textDiv.style.height = "5rem";
+  textDiv.style.height = "5.2rem";
   textDiv.innerHTML = `<svg width="100%" height="100%">
 <filter id="bevel">
   <!-- color for stroke and bevel -->
