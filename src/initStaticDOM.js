@@ -13,13 +13,10 @@ export default function initStaticDOM() {
   const newGameBtn = document.createElement("button");
   newGameBtn.innerHTML = "New Game";
   newGameBtn.id = "new-game-btn";
-  const toggleAIBtn = document.createElement("button");
-  toggleAIBtn.innerHTML = "AI";
-  toggleAIBtn.id = "toggle-ai-btn";
 
   const btnDiv = document.createElement("div");
   btnDiv.classList.add("btn-div");
-  const toggle = toggleSwitch("toggle");
+  const toggle = toggleSwitch("ai-toggle");
   btnDiv.append(newGameBtn, toggle);
 
   const p1Div = mkPlayerDiv("p1");

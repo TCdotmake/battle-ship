@@ -6,6 +6,9 @@ export default function mkGame() {
     toggleP2AI() {
       this.p2.AI = !this.p2.AI;
     },
+    setP2AI(val) {
+      this.p2.AI = val;
+    },
     togglePlayer() {
       if (this.currentPlayer === this.p1) {
         this.currentPlayer = this.p2;

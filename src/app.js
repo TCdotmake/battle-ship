@@ -5,6 +5,7 @@ import switchModal from "./modal/switchPlayerModal";
 import mkIcon from "./icon/mkIcon";
 import boomSVG from "./icon/boomSVG";
 import missCloudSVG from "./icon/missCloudSVG";
+import mkSVGText from "./svgText/mkSVGText";
 
 export default function app() {
   initStaticDOM();
@@ -23,23 +24,28 @@ function addNewGameEL(gameObj) {
     NewGame(gameObj);
     openSwitchModal(gameObj);
   });
-  const toggleAIBtn = document.getElementById("toggle-ai-btn");
-  toggleAIBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    gameObj.toggleP2AI();
+  const toggleAIBtn = document.getElementById("ai-toggle");
+  toggleAIBtn.addEventListener("change", (e) => {
+    gameObj.setP2AI(e.target.checked);
   });
 }
 
 function openSwitchModal(gameObj) {
   const modal = document.getElementById("switch-modal");
-  let playerName = document.getElementById("modal-player-name");
+
   let name = gameObj.currentPlayer.name;
   if (name === "p1") {
-    playerName.innerHTML = `Player1's`;
+    switchModal.innerHTML = "";
+    let p1rdy = mkSVGText("P1 Ready?");
+    p1rdy.style.height = "5.5rem";
+    switchModal.append(p1rdy);
   } else {
-    playerName.innerHTML = `Player2's`;
+    switchModal.innerHTML = "";
+    let p2rdy = mkSVGText("P2 Ready?");
+    p2rdy.style.height = "5.5rem";
+    switchModal.append(p2rdy);
   }
-  modal.style.display = "block";
+  modal.style.display = "flex";
   switchDisplayedBoard(gameObj, name);
 }
 
