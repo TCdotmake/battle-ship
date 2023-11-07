@@ -24,4 +24,9 @@ export default function NewGame(gameObj) {
   //populate board with ships
   displayShips("p1-self", gameObj.p1);
   displayShips("p2-self", gameObj.p2);
+  //get rid of win screens
+  const screens = document.querySelectorAll(".win-screen");
+  for (let item of screens) {
+    item.style.display = "none";
+  }
 }

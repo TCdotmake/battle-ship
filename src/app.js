@@ -144,4 +144,8 @@ function displayWinner(gameObj) {
   }
   winner.style.display = "flex";
   loser.style.display = "flex";
+  const hits = document.querySelectorAll(".hit");
+  for (let item of hits) {
+    item.classList.add("animate-pop-loop");
+  }
 }
