@@ -1,0 +1,43 @@
+.icon {
+  > svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.p1-icon {
+  > svg {
+    > g {
+      > path {
+        fill: var(--blue);
+      }
+    }
+  }
+}
+
+.p2-icon {
+  > svg {
+    > g {
+      > path {
+        fill: var(--red);
+      }
+    }
+  }
+}
+
+.github-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+
+  > svg {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    > path {
+      fill: black;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/*reset style*/
+@import "./resetStyle.css";
+
+/*bold font*/
+@import "./fonts/lilitaone/lilitaone.css";
+
+/*Board Container*/
+@import "./playerDiv.css";
+
+/*icon*/
+@import "./icon/icon.css";
+
+/*modal*/
+@import "./modal//modal.css";
+
+/*app, general apperance*/
+@import "./app.css";
+
+/*end game msg*/
+@import "./gameEnd.css";
+
+/*svg font*/
+@import "./svgText/svgText.css";
+
+/*color variables*/
+@import "./color.css";
+
+/*toggleSwitch*/
+@import "./toggleSwitch.css";
+
+/*pop animation*/
+@import "./animate-pop.css";

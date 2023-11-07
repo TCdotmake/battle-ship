@@ -1,0 +1,20 @@
+.stroke-color {
+  flood-color: #fff;
+}
+
+.bevel-color {
+  flood-color: var(--red);
+}
+
+.text-color {
+  fill: var(--blue);
+}
+
+.svg-text {
+  transform: rotate(-3deg);
+  font-family: "Lilita One";
+  font-size: 4rem;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  filter: url(#bevel);
+}
