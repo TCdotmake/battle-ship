@@ -25,7 +25,8 @@ export default function initStaticDOM() {
 
   const github = document.createElement("a");
   github.innerHTML = "GitHub";
-
+  github.href = "https://github.com/TCdotmake/battle-ship/tree/main";
+  github.target = "_blank";
   btnDiv.append(newGameBtn, toggle, aiLabel, github);
 
   const p1Div = mkPlayerDiv("p1");
